@@ -51,4 +51,9 @@ public abstract class Tweet {
         System.out.println("Added a mood! Mood is ");
         System.out.println(mood.whatIsTheMood());
     }
+
+    @Override
+    public String toString() {
+        return date.toString() + " | " + message;
+    }
 }
