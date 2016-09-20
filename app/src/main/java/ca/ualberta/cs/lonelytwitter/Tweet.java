@@ -1,32 +1,33 @@
 package ca.ualberta.cs.lonelytwitter;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by keith on 9/13/2016.
+ * Created by watts1 on 9/13/16.
  */
 public abstract class Tweet {
-
     private String message;
     private Date date;
-    private ArrayList<BaseMood> tweetMoodList;
 
-
-    public Tweet(String message) {
+    public Tweet(String message){
         this.message = message;
-        this.tweetMoodList = new ArrayList<BaseMood>();
+        this.date = new Date();
     }
 
-    public Tweet(String message, Date date) {
+    public Tweet(String message, Date date){
         this.message = message;
         this.date = date;
-        this.tweetMoodList = new ArrayList<BaseMood>();
     }
+
+
+    public abstract Boolean isImportant();
+
+
+
 
     public void setMessage(String message) throws TweetTooLongException {
         if (message.length() > 140) {
-            // Do something
+            //Do something
             throw new TweetTooLongException();
         }
         this.message = message;
@@ -36,8 +37,6 @@ public abstract class Tweet {
         this.date = date;
     }
 
-    public abstract Boolean isImportant();
-
     public String getMessage() {
         return message;
     }
@@ -46,14 +45,8 @@ public abstract class Tweet {
         return date;
     }
 
-    public void addAMood(BaseMood mood) {
-        tweetMoodList.add(mood);
-        System.out.println("Added a mood! Mood is ");
-        System.out.println(mood.whatIsTheMood());
-    }
-
     @Override
-    public String toString() {
-        return date.toString() + " | " + message;
+    public String toString(){
+        return  date.toString() + " | " + message;
     }
 }
