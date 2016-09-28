@@ -10,8 +10,12 @@ import java.util.List;
 public class TweetList {
     List<Tweet> tweets = new ArrayList<Tweet>();
     public void add(Tweet tweet) {
-        tweets.add(tweet);
-
+        if (!this.hasTweet(tweet)) {
+            tweets.add(tweet);
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public boolean hasTweet(Tweet tweet) {
@@ -24,5 +28,13 @@ public class TweetList {
 
     public void delete(Tweet a) {
         tweets.remove(a);
+    }
+
+    public List<Tweet> getTweets() {
+        return this.tweets;
+    }
+
+    public int getCount() {
+        return tweets.size();
     }
 }
