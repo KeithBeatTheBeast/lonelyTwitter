@@ -6,13 +6,20 @@ import java.util.List;
 
 /**
  * Created by keith on 9/27/2016.
+ * @author keith
+ * Tests for tweetlist
  */
-
 public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
+    /**
+     * Instantiates a new Tweet list test.
+     */
     public TweetListTest() {
         super(LonelyTwitterActivity.class);
     }
 
+    /**
+     * Test add tweet.
+     */
     public void testAddTweet() {
         TweetList list = new TweetList();
 
@@ -22,6 +29,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
 
     }
 
+    /**
+     * Test has tweet.
+     */
     public void testHasTweet() {
         TweetList list = new TweetList();
 
@@ -31,6 +41,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         assertTrue(list.hasTweet(tweet));
     }
 
+    /**
+     * Test get tweet.
+     */
     public void testGetTweet() {
         TweetList list = new TweetList();
 
@@ -43,6 +56,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         assertEquals(b, list.getTweet(1));
     }
 
+    /**
+     * Test delete tweet.
+     */
     public void testDeleteTweet() {
         TweetList list = new TweetList();
 
@@ -54,6 +70,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         assertFalse(list.hasTweet(a));
     }
 
+    /**
+     * Test add twice.
+     */
     public void testAddTwice() {
         TweetList list = new TweetList();
 
@@ -68,6 +87,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         }
     }
 
+    /**
+     * Test get tweets.
+     */
     public void testGetTweets() {
         TweetList list = new TweetList();
 
@@ -80,6 +102,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         assertEquals(b, otherList.get(1));
     }
 
+    /**
+     * Test get count.
+     */
     public void testGetCount() {
         TweetList list = new TweetList();
         Tweet a = new NormalTweet("jjj");
