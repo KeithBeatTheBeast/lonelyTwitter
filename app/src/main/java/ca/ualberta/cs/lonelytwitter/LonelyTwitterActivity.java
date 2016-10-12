@@ -17,9 +17,11 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +47,7 @@ public class LonelyTwitterActivity extends Activity {
 	 * @see #loadFromFile()
 	 * @see #saveInFile()
 	 */
+	private Activity activity = this;
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
@@ -63,6 +66,10 @@ public class LonelyTwitterActivity extends Activity {
 	 * Contains listeners for save and clear buttons
 	 * Main function
 	 */
+
+	public ListView getOldTweetsList() {
+		return oldTweetsList;
+	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -105,8 +112,16 @@ public class LonelyTwitterActivity extends Activity {
 			}
 		});
 
+		oldTweetsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(activity, EditTweetActivity.class);
+				intent.putExtra("Editing", tweetList.get(position).toString());
+				startActivity(intent);
+			}
+		});
+
 		// ATTENTION: This was auto-generated to implement the App Indexing API.
-		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		//See https://g.co/AppIndexing/AndroidStudio for more information.
 		client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 	}
 
